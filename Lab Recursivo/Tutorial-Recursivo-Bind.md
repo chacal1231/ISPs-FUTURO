@@ -44,6 +44,7 @@ options {
 	// you will need to update your keys. See https://www.isc.org/bind-keys
 	//========================================================================
 	dnssec-validation auto; <--- activo DNSSEC y bind automaticamente genera y mantienes las llaves desde los servidores root
+	qname-minimization relaxed; <--- Activo qname-minimization para que solo envie parte del dominio consultado y tenga mejor rendimiento en la consulta.
 	listen-on port 53 { any; };	    <--- escuchamos en el puerto 53 en cualquier interface en IPv4
 	listen-on-v6 port 53 { any; };  <--- escuchamos en el puerto 53 en cualquier interface en IPv6
 	
@@ -101,5 +102,37 @@ May 13 01:38:27 resolv.mac-tel.co named[849]: resolver priming query complete
 Con esto ya tenemos nuestro dns recursivo andando, para comprobar su funcionamiento utilizaremos dig
 
 
+```
+dig @localhost google.com
+```
 
+Nos dará como respuesta algo como esto 
 
+```
+root@dns:/etc/bind# dig google.com @localhost
+
+; <<>> DiG 9.16.48-Ubuntu <<>> google.com @localhost
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 24214
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: b523c33698614990010000006654c3c18abbfa340cc13ef5 (good)
+;; QUESTION SECTION:
+;google.com.                    IN      A
+
+;; ANSWER SECTION:
+google.com.             116     IN      A       142.250.78.174
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: Mon May 27 17:32:49 UTC 2024
+;; MSG SIZE  rcvd: 83
+```
+qr: Indica que este es un mensaje de respuesta.
+
+rd: Indica que la consulta solicitó recursión.
+
+ra: Indica que el servidor permite y ha realizado la recursión.
