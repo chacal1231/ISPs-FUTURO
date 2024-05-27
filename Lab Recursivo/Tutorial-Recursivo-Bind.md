@@ -99,8 +99,69 @@ May 13 01:38:27 resolv.mac-tel.co named[849]: managed-keys-zone: Key 20326 for z
 May 13 01:38:27 resolv.mac-tel.co named[849]: resolver priming query complete
 ```
 
-Con esto ya tenemos nuestro dns recursivo andando, para comprobar su funcionamiento utilizaremos dig
+Con esto ya tenemos nuestro dns recursivo andando, para comprobar su funcionamiento utilizaremos dig y los servidores raiz quemados en bind
 
+```
+dig @localhost
+
+; <<>> DiG 9.16.48-Ubuntu <<>> @localhost
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 41236
+;; flags: qr rd ra ad; QUERY: 1, ANSWER: 13, AUTHORITY: 0, ADDITIONAL: 27
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: cdffe4158c376661010000006654c785f5bc92faf92bf95e (good)
+;; QUESTION SECTION:
+;.                              IN      NS
+
+;; ANSWER SECTION:
+.                       517873  IN      NS      a.root-servers.net.
+.                       517873  IN      NS      d.root-servers.net.
+.                       517873  IN      NS      f.root-servers.net.
+.                       517873  IN      NS      l.root-servers.net.
+.                       517873  IN      NS      j.root-servers.net.
+.                       517873  IN      NS      b.root-servers.net.
+.                       517873  IN      NS      m.root-servers.net.
+.                       517873  IN      NS      e.root-servers.net.
+.                       517873  IN      NS      c.root-servers.net.
+.                       517873  IN      NS      i.root-servers.net.
+.                       517873  IN      NS      g.root-servers.net.
+.                       517873  IN      NS      h.root-servers.net.
+.                       517873  IN      NS      k.root-servers.net.
+
+;; ADDITIONAL SECTION:
+a.root-servers.net.     517873  IN      A       198.41.0.4
+b.root-servers.net.     517873  IN      A       170.247.170.2
+c.root-servers.net.     517873  IN      A       192.33.4.12
+d.root-servers.net.     517873  IN      A       199.7.91.13
+e.root-servers.net.     517873  IN      A       192.203.230.10
+f.root-servers.net.     517873  IN      A       192.5.5.241
+g.root-servers.net.     517873  IN      A       192.112.36.4
+h.root-servers.net.     517873  IN      A       198.97.190.53
+i.root-servers.net.     517873  IN      A       192.36.148.17
+j.root-servers.net.     517873  IN      A       192.58.128.30
+k.root-servers.net.     517873  IN      A       193.0.14.129
+l.root-servers.net.     517873  IN      A       199.7.83.42
+m.root-servers.net.     517873  IN      A       202.12.27.33
+a.root-servers.net.     517873  IN      AAAA    2001:503:ba3e::2:30
+b.root-servers.net.     517873  IN      AAAA    2801:1b8:10::b
+c.root-servers.net.     517873  IN      AAAA    2001:500:2::c
+d.root-servers.net.     517873  IN      AAAA    2001:500:2d::d
+e.root-servers.net.     517873  IN      AAAA    2001:500:a8::e
+f.root-servers.net.     517873  IN      AAAA    2001:500:2f::f
+g.root-servers.net.     517873  IN      AAAA    2001:500:12::d0d
+h.root-servers.net.     517873  IN      AAAA    2001:500:1::53
+i.root-servers.net.     517873  IN      AAAA    2001:7fe::53
+j.root-servers.net.     517873  IN      AAAA    2001:503:c27::2:30
+k.root-servers.net.     517873  IN      AAAA    2001:7fd::1
+l.root-servers.net.     517873  IN      AAAA    2001:500:9f::42
+m.root-servers.net.     517873  IN      AAAA    2001:dc3::35
+```
+
+Ahora preguntaremos quien es google
 
 ```
 dig @localhost google.com
@@ -136,3 +197,6 @@ qr: Indica que este es un mensaje de respuesta.
 rd: Indica que la consulta solicitó recursión.
 
 ra: Indica que el servidor permite y ha realizado la recursión.
+
+
+Con esto hemos terminado el laboratorio de servidor recursivo en ubuntu con Bind9
