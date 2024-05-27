@@ -39,9 +39,9 @@ options {
 	// If BIND logs error messages about the root key being expired,
 	// you will need to update your keys. See https://www.isc.org/bind-keys
 	//========================================================================
-	
+	dnssec-enable yes; <--- activo DNSSEC
 	dnssec-validation auto;
-
+	 managed-keys-directory "/var/lib/bind/dnssec"; <--- Directorio donde se guardaran las keys del DNS
 	listen-on port 53 { any; };	    <--- escuchamos en el puerto 53 en cualquier interface en IPv4
 	listen-on-v6 port 53 { any; };  <--- escuchamos en el puerto 53 en cualquier interface en IPv6
 	
