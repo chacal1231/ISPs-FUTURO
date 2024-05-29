@@ -246,3 +246,7 @@ Despues de eso, procedemos en la parte de abajo y seleccionamos el datasource pr
 
 
 ![Load](Image9.png)
+
+Y guala!!!! Ya tenemos nuestro dashboard listo para usar!!!!
+
+![Load](Image10.png)
