@@ -1,2 +1,2 @@
-# DNS-ISP-FUTURO
-Practicas DNS para ISP's
+# ISP-FUTURO
+Aquí encontrarás diferentes tutoriales enfocados para tu ISP!
