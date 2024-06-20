@@ -136,7 +136,7 @@ systemctl start bind_exporter
 ```
 Ejecutamos el status del servicio
 ```
-systemctl status prometheus
+systemctl status bind_exporter
 ```
 Si todo salió bien debemos tener la siguiente salida al ejecutar el status 
 ```
@@ -174,7 +174,7 @@ Y añadimos el worker al final del archivo
 Reiniciamos el servicio de prometheus
 
 ```
-systemctl restart prometheus.service
+systemctl restart prometheus
 ```
 
 Ahora añadimos un canal statico en bind para sacar la metadata
