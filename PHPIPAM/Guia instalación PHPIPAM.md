@@ -157,4 +157,6 @@ sudo mysql -u root -p phpipam < /var/www/html/db/SCHEMA.sql
 
 ## Finalizar instalación
 
-Abre tu navegador y visita `http://ipam.example.com` (ajusta según tu dominio o IP) para finalizar la instalación web de PHPIPAM.
+Abre tu navegador y visita `http://ipam.example.com` (ajusta según tu dominio o IP) (Admin/ipamadmin). para finalizar la instalación web de PHPIPAM.
+
+
