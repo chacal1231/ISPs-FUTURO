@@ -89,7 +89,7 @@ sudo systemctl restart apache2
 ## 7. Instalar módulos PHP requeridos
 
 ```bash
-sudo apt -y install libapache2-mod-php php-curl php-xmlrpc php-intl php-gd
+sudo apt -y install libapache2-mod-php php-curl php-xmlrpc php-intl php-gd php-gmp php-mysql php-mbstring php-xml php-pear
 ```
 
 ---
