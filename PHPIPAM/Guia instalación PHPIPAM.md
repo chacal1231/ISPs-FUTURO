@@ -141,8 +141,8 @@ sudo crontab -e
 Agregar las siguientes líneas:
 
 ```cron
-*/15 * * * * /usr/bin/php /var/www/html/phpipam/functions/scripts/pingCheck.php
-*/15 * * * * /usr/bin/php /var/www/html/phpipam/functions/scripts/discoveryCheck.php
+*/15 * * * * /usr/bin/php /var/www/html/functions/scripts/pingCheck.php
+*/15 * * * * /usr/bin/php /var/www/html/functions/scripts/discoveryCheck.php
 ```
 
 ---
@@ -150,7 +150,7 @@ Agregar las siguientes líneas:
 ## 11. Importar la base de datos inicial
 
 ```bash
-sudo mysql -u root -p phpipam < /var/www/html/phpipam/db/SCHEMA.sql
+sudo mysql -u root -p phpipam < /var/www/html/db/SCHEMA.sql
 ```
 
 ---
