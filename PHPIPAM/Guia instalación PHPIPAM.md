@@ -53,8 +53,8 @@ QUIT;
 ## 4. Clonar el repositorio PHPIPAM
 
 ```bash
-sudo git clone --recursive https://github.com/phpipam/phpipam.git /var/www/html/phpipam
-cd /var/www/html/phpipam
+sudo git clone --recursive https://github.com/phpipam/phpipam.git /var/www/html/
+cd /var/www/html/
 sudo cp config.dist.php config.php
 ```
 
@@ -105,11 +105,11 @@ Contenido del archivo:
 ```apache
 <VirtualHost *:80>
     ServerAdmin admin@example.com
-    DocumentRoot "/var/www/html/phpipam"
+    DocumentRoot "/var/www/html"
     ServerName ipam.example.com
     ServerAlias www.ipam.example.com
 
-    <Directory "/var/www/html/phpipam">
+    <Directory "/var/www/html/">
         Options Indexes FollowSymLinks
         AllowOverride All
         Require all granted
@@ -125,7 +125,7 @@ Contenido del archivo:
 ## 9. Cambiar permisos y habilitar sitio
 
 ```bash
-sudo chown -R www-data:www-data /var/www/html/phpipam
+sudo chown -R www-data:www-data /var/www/html
 sudo a2ensite phpipam
 sudo systemctl restart apache2
 ```
