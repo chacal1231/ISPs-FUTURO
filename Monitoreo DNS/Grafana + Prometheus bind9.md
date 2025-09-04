@@ -110,13 +110,7 @@ Wants=network-online.target
 After=network-online.target
 [Service]
 ExecReload=/bin/kill -HUP $MAINPID
-ExecStart=/etc/bind_exporter/bind_exporter \
-  --bind.pid-file=/var/run/named/named.pid \
-  --bind.timeout=20s \
-  --web.listen-address=0.0.0.0:9153 \
-  --web.telemetry-path=/metrics \
-  --bind.stats-url=http://127.0.0.1:8053/ \
-  --bind.stats-groups=server,view,tasks
+ExecStart=/etc/bind_exporter/bind_exporter --bind.pid-file=/var/run/named/named.pid  --bind.timeout=20s  --web.listen-address=0.0.0.0:9153  --web.telemetry-path=/metrics  --bind.stats-url=http://127.0.0.1:8053/  --bind.stats-groups=server,view,tasks
 Restart=always
 [Install]
 WantedBy=multi-user.target
