@@ -4,6 +4,8 @@ Frontend web local para revisar direcciones IPv4 y rangos CIDR contra listas neg
 
 El proyecto se ejecuta desde `main.py`. Desde el navegador se ingresan los objetivos, se configura el escaneo y se consultan los resultados.
 
+Desarrollado por David Macmahon.
+
 ## Estructura
 
 ```text
@@ -79,6 +81,12 @@ python main.py --host 0.0.0.0 --port 8080
 
 - Python 3.9+
 - dnspython
+
+## Licencia
+
+Este proyecto se publica bajo la licencia MIT.
+
+Puedes copiarlo, modificarlo, distribuirlo y usarlo en proyectos personales o comerciales, siempre que conserves el aviso de copyright y la licencia.
 
 ## Notas
 
