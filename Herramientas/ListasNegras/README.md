@@ -1,21 +1,29 @@
-# DNSBL Scanner
+# DNSBL Scanner Web
 
-Escaner open source para revisar direcciones IPv4 y rangos CIDR contra listas negras DNSBL publicas.
+Frontend web local para revisar direcciones IPv4 y rangos CIDR contra listas negras DNSBL publicas.
 
-Este fork separa el motor de escaneo del entorno privado original. El resultado se muestra en consola con una tabla visual y tambien puede generar un reporte HTML navegable.
+El proyecto se ejecuta desde `main.py`. Desde el navegador se ingresan los objetivos, se configura el escaneo y se consultan los resultados.
 
 ## Estructura
 
 ```text
-ListasNegras-OpenSource/
+ListasNegras/
 ├── CheckListas.py
 ├── main.py
 ├── requirements.txt
-├── .gitignore
+├── reports/
 └── README.md
 ```
 
 ## Instalacion
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+En Linux o macOS:
 
 ```bash
 python3 -m venv .venv
@@ -23,58 +31,41 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Uso rapido
+## Uso
 
-Escanear una IP:
-
-```bash
-python3 main.py 8.8.8.8
-```
-
-Escanear varias IPs:
+Ejecuta solamente:
 
 ```bash
-python3 main.py 8.8.8.8 1.1.1.1 203.0.113.10
+python main.py
 ```
 
-Escanear un rango CIDR:
-
-```bash
-python3 main.py 203.0.113.0/29
-```
-
-Usar un archivo:
-
-```bash
-python3 main.py --file targets.txt
-```
-
-El archivo puede contener una IP o CIDR por linea. Las lineas vacias y las que empiezan por `#` se ignoran.
-
-## Salida visual
-
-La consola muestra un resumen por IP:
+Luego abre:
 
 ```text
-DNSBL scan results
-IPs scanned: 2 | DNSBL zones: 67 | Listed IPs: 1 | Hits: 3 | Time: 4.22s
-
-IP               RISK     HITS    VISUAL               BLACKLISTS
---------------------------------------------------------------------------------------------
-203.0.113.10     ALTO     3       [#.................]  Spamhaus ZEN, CBL, Spamcop
-8.8.8.8          BAJO     0       [..................]  -
+http://127.0.0.1:8000
 ```
 
-Tambien genera un reporte HTML en `reports/` con KPIs, tabla de riesgo, barras visuales y detalle de cada DNSBL que respondio.
-
-## Opciones utiles
+La aplicacion intenta abrir el navegador automaticamente. Si prefieres no abrirlo:
 
 ```bash
-python3 main.py 8.8.8.8 --json reports/result.json
-python3 main.py 203.0.113.0/24 --max-hosts 512
-python3 main.py 8.8.8.8 --no-html
-python3 main.py 8.8.8.8 --fail-on-listed
+python main.py --no-browser
 ```
+
+Tambien puedes cambiar host o puerto:
+
+```bash
+python main.py --host 0.0.0.0 --port 8080
+```
+
+## Que se puede hacer desde el frontend
+
+- Ingresar una o varias IPv4.
+- Ingresar rangos CIDR.
+- Ajustar `max hosts`, `timeout` y concurrencia.
+- Ejecutar el escaneo contra las DNSBL.
+- Ver KPIs, riesgo por IP, hits y detalle TXT de cada lista.
+- Guardar un reporte HTML en `reports/`.
+- Guardar un JSON con el ultimo resultado.
 
 ## Criterio de riesgo
 
@@ -93,5 +84,5 @@ python3 main.py 8.8.8.8 --fail-on-listed
 
 - Solo se soporta IPv4 porque las DNSBL consultadas usan el formato de IPv4 invertida.
 - Algunas DNSBL pueden bloquear consultas frecuentes o requerir registro previo.
-- Un listing no siempre significa abuso activo. Use el detalle TXT y la politica de cada lista para tomar decisiones.
-- Los rangos CIDR grandes pueden generar muchas consultas DNS. Ajuste `--max-hosts`, `--concurrency` y `--timeout` segun su red.
+- Un listado no siempre significa abuso activo. Usa el detalle TXT y la politica de cada lista para tomar decisiones.
+- Los rangos CIDR grandes pueden generar muchas consultas DNS. Ajusta `max hosts`, concurrencia y timeout desde el frontend.
