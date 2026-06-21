@@ -1,4 +1,4 @@
-# Hardening ISP — MikroTik RouterOS v7 (IPv4) para no caer en listas negras
+# MikroTik RouterOS v7 (IPv4) para no caer en listas negras
 
 **Objetivo:** reducir el riesgo de que IPs, prefijos o el ASN del ISP terminen en listas negras por open resolver, open proxy, amplificación, spam, spoofing o clientes comprometidos.
 
