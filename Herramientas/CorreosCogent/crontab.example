@@ -1,0 +1,3 @@
+# Ejecuta CorreosCogent a los minutos 00 y 30. A medianoche también procesa ayer.
+CRON_TZ=America/Bogota
+*/30 * * * * run.sh --cron >> logs/cron.log 2>&1
