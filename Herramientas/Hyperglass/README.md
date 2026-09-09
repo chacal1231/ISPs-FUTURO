@@ -330,29 +330,6 @@ sudo systemctl restart hyperglass
 | Mensaje de interrupción de teclado | Ctrl+C detiene el proceso en primer plano. |
 | RPKI no verificado | Comprobar salida estructurada, AS_PATH, acceso HTTPS y respuesta de la API externa. |
 
-## 11. Publicación del tutorial sin secretos
-
-Publica este README desde un directorio nuevo. No inicialices el repositorio sobre la configuración operativa ni copies logs, credenciales, claves, archivos temporales o el frontend compilado: estos pueden contener datos de la instalación.
-
-```bash
-mkdir -p ~/hyperglass-tutorial
-cp /etc/hyperglass/README.md ~/hyperglass-tutorial/README.md
-cd ~/hyperglass-tutorial
-git init
-git add README.md
-git diff --cached
-git commit -m "Documentar despliegue de Hyperglass 1.0.4"
-```
-
-Después de revisar el contenido, añade el remoto de tu repositorio y publica:
-
-```bash
-git branch -M main
-git remote add origin URL_DE_TU_REPOSITORIO
-git push -u origin main
-```
-
-Si añades ejemplos YAML, conserva únicamente valores ficticios. No publiques salidas de depuración: algunas registran la configuración del dispositivo con credenciales. Quitar un secreto de la última versión de un archivo no lo elimina del historial Git.
 
 ## Referencias
 
